@@ -12,6 +12,10 @@ gunicorn = "*"
 whitenoise = "*"
 dj-database-url = "*"
 psycopg2 = "*"
+pillow = "*"
+django-star-ratings = "*"
+django-crispy-forms = "*"
+django-registration = "==2.0"
 
 [requires]
 python_version = "3.6"
