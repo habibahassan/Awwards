@@ -23,3 +23,23 @@ class Projects(models.Model):
 
     def __str__(self):
         return self.url
+
+class Profile(models.Model):
+    profile_photo = models.ImageField(upload_to='profpics/')
+    bio = models.TextField(blank=True)
+    user_id = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.bio
+
+    def save_user(self):
+        self.save()
+
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user_id=instance)
+
+    @receiver(post_save, sender=User)
+    def save_profile(sender, instance, **kwargs):
+        instance.profile.save()
