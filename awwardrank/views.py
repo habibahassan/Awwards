@@ -17,3 +17,9 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'register.html', locals())
+
+@login_required(login_url='/accounts/login')
+def home(request):
+    current_user = request.user
+    all_projects = Projects.objects.all()
+    return render(request, 'home.html', locals())
