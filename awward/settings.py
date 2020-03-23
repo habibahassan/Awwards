@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'awwardrank',
+    'django_forms_bootstrap',
     'bootstrap3',
     'crispy_forms',
     'star_ratings',
