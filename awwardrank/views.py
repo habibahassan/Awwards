@@ -30,27 +30,7 @@ def project(request, project_id):
         project = Projects.objects.get(id=project_id)
     except Projects.DoesNotExist:
         raise Http404()
-
-    # comments = Review.get_comment(project_id)
-    # latest_review_list=Review.objects.all().filter(project_id = project.id)
-
-    # if request.method == 'POST':
-    #     form = ReviewForm(request.POST)
-    #     if form.is_valid():
-    #         review = form.save(commit=False)
-    #         review.project = project
-    #         review.user = request.user
-    #         review.save()
-
-    # else:
-    #     form = ReviewForm()   
-
-       
-
-    # return render(request, 'project.html', {"project": project,'form':form,'comments':comments,'latest_review_list':latest_review_list})
-
     return render(request, "project.html", locals())
-
 
 @login_required(login_url='/accounts/login')
 def profile(request):

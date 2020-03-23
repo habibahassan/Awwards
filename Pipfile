@@ -17,6 +17,7 @@ django-star-ratings = "*"
 django-crispy-forms = "*"
 django-registration = "==2.0"
 django-forms-bootstrap = "*"
+djangorestframework = "*"
 
 [requires]
 python_version = "3.6"
