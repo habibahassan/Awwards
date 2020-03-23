@@ -18,15 +18,18 @@ from django.urls import path,include
 from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
 from django.conf import settings
-from awwardrank import views 
+from awwardrank import views
+from rest_framework.authtoken.views import obtain_auth_token
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('awwardrank.urls')),
     # re_path('logout/', views.logout, {"next_page": '/'}),
-    # path('ratings/', include('star_ratings.urls',
-    #                           namespace='ratings', app_name='ratings')),
+    path('ratings/', include('star_ratings.urls',
+                              namespace='ratings')),
+    path('api-token-auth/', obtain_auth_token),
     path('search/', views.search, name='search'),
 ]
 
