@@ -24,7 +24,7 @@ from awwardrank import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('awwardrank.urls')),
-    # path('logout/', views.logout, {"next_page": '/'}),
+    # re_path('logout/', views.logout, {"next_page": '/'}),
     # path('ratings/', include('star_ratings.urls',
     #                           namespace='ratings', app_name='ratings')),
     path('search/', views.search, name='search'),
