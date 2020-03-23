@@ -2,7 +2,6 @@ from django import forms
 from .models import Projects, Profile,Review,Comments
 from django.core import validators
 
-
 class ProjectsForm(forms.ModelForm):
     class Meta:
         model = Projects
