@@ -26,7 +26,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('awwardrank.urls')),
-    # re_path('logout/', views.logout, {"next_page": '/'}),
+    # path('logout/', views.logout, {"next_page": '/'}),
     path('ratings/', include('star_ratings.urls',
                               namespace='ratings')),
     path('api-token-auth/', obtain_auth_token),

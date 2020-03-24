@@ -4,7 +4,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from .forms import *
 from django.http import Http404
-
+from rest_framework.views import APIView
+from .serializer import *
 # Create your views here.
 
 
@@ -16,7 +17,7 @@ def register(request):
         return redirect('login')
     else:
         form = UserCreationForm()
-    return render(request, 'register.html', locals())
+    return render(request, 'register_form.html', locals())
 
 @login_required(login_url='/accounts/login')
 def home(request):
@@ -30,7 +31,7 @@ def project(request, project_id):
         project = Projects.objects.get(id=project_id)
     except Projects.DoesNotExist:
         raise Http404()
-    return render(request, "project.html", locals())
+    return render(request, "posted_projects.html", locals())
 
 @login_required(login_url='/accounts/login')
 def profile(request):
@@ -59,7 +60,7 @@ def upload_form(request):
             return redirect('home')
     else:
         form = UploadForm()
-    return render(request, 'post.html', {'uploadform': form})
+    return render(request, 'project_post.html', {'uploadform': form})
 
 
 @login_required(login_url='/accounts/login')
@@ -74,7 +75,7 @@ def edit_prof(request):
             return redirect('profile')
     else:
         form = ProfileForm()
-    return render(request, 'profile_edit.html', {'profileform': form})
+    return render(request, 'profile_update.html', {'profileform': form})
 
 
 @login_required(login_url='/accounts/login')
@@ -88,3 +89,15 @@ def search(request):
 @login_required(login_url='/accounts/login')
 def logout_view(request):
     logout(request)
+
+class ProjectList(APIView):
+    def get(self, request, format=None):
+        all_project = Project.objects.all()
+        serializers = ProjectSerializer(all_project, many=True)
+        return Response(serializers.data)
+
+class ProfileList(APIView):
+    def get(self, request, format=None):
+        all_profile = Profile.objects.all()
+        serializers = ProfileSerializer(all_profile, many=True)
+        return Response(serializers.data)
