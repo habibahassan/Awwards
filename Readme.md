@@ -2,6 +2,9 @@
 ## By ** Habiba **
 ## Description
 An application that will allow a user to post a project he/she has created and get it reviewed by his/her peers.
+
+## Code Beat
+[![codebeat badge](https://codebeat.co/badges/2d7eedd6-a8fb-43ed-a8b7-a62b9677c9d6)](https://codebeat.co/projects/github-com-habibahassan-awwards-master)
 ## USER STORIES
  - 1.Register and Sign in to the application. 
  - 2.Upload projects to the application. 
